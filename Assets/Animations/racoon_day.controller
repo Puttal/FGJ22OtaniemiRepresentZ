@@ -33,7 +33,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Racoon57
+  m_Name: racoon_day
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isMoving
@@ -41,7 +41,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -124,7 +124,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25127998
+  m_TransitionDuration: 0.0038397908
   m_TransitionOffset: 0
   m_ExitTime: 0.577562
   m_HasExitTime: 1
@@ -149,7 +149,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.24622734
+  m_TransitionDuration: 0.016289258
   m_TransitionOffset: 0
   m_ExitTime: 0.74999994
   m_HasExitTime: 1
