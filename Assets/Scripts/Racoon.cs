@@ -10,7 +10,11 @@ public class Racoon : MonoBehaviour
     private InputAction moveAction;
     private float horizontal;
     private InputAction jumpAction;
-    // Start is called before the first frame update
+    private InputAction interAction;
+    
+
+    private bool canJump = false;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -23,9 +27,11 @@ public class Racoon : MonoBehaviour
         
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
+        interAction = playerInput.actions["Interact"];
 
         //moveAction.performed += Move;
         jumpAction.performed += Jump;
+        interAction.performed += Interact;
     }
 
     // Update is called once per frame
@@ -36,17 +42,52 @@ public class Racoon : MonoBehaviour
 
         if (horizontal > 0) {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-        } else {
+        } else if (horizontal < 0) {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 
-    // private void Move(InputAction.CallbackContext context) {
-    //     horizontal = context.ReadValue<Vector2>().x;
-    // }
-
     private void Jump(InputAction.CallbackContext context) {
+        if (canJump) {
         //TODO: Detect a collision below me, to allow jumping
-        rigid.AddForce(transform.up * new Vector2(0, 200f), ForceMode2D.Force);
+            rigid.AddForce(transform.up * new Vector2(0, 500f), ForceMode2D.Force);
+        }
+    }
+
+    private void Interact(InputAction.CallbackContext context) {
+        //TODO
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.contacts.Length > 0)
+        {
+            for (int i = 0; i < collision.contacts.Length; i++) {
+                ContactPoint2D contact = collision.GetContact(i);
+                if(Vector3.Dot(contact.normal, Vector3.up) > 0.5)
+                {
+                    Debug.Log("Can Jump");
+                    canJump = true;
+                }
+            }
+        } else {
+            canJump = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if(collision.contacts.Length > 0)
+        {
+            for (int i = 0; i < collision.contacts.Length; i++) {
+                ContactPoint2D contact = collision.GetContact(i);
+                if(Vector3.Dot(contact.normal, Vector3.up) > 0.5)
+                {
+                    Debug.Log("Can Jump");
+                    canJump = true;
+                }
+            }
+        } else {
+            canJump = false;
+        }
     }
 }
