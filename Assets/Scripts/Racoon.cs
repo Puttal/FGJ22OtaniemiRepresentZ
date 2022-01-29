@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Racoon : MonoBehaviour
 {
     private Rigidbody2D rigid;
+    private BoxCollider2D colider;
     private PlayerInput playerInput;
     private InputAction moveAction;
     private float horizontal;
@@ -18,6 +19,7 @@ public class Racoon : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        colider = GetComponent<BoxCollider2D>();
 
         var gamepad = Gamepad.current;
         var keyboard = Keyboard.current;
@@ -32,6 +34,8 @@ public class Racoon : MonoBehaviour
         //moveAction.performed += Move;
         jumpAction.performed += Jump;
         interAction.performed += Interact;
+
+        CameraManager.Instance.AddRacoon(this);
     }
 
     // Update is called once per frame
@@ -48,9 +52,10 @@ public class Racoon : MonoBehaviour
     }
 
     private void Jump(InputAction.CallbackContext context) {
-        if (canJump) {
+        if (CanJump()) {
         //TODO: Detect a collision below me, to allow jumping
             rigid.AddForce(transform.up * new Vector2(0, 500f), ForceMode2D.Force);
+            canJump = false;
         }
     }
 
@@ -58,24 +63,12 @@ public class Racoon : MonoBehaviour
         //TODO
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.contacts.Length > 0)
-        {
-            for (int i = 0; i < collision.contacts.Length; i++) {
-                ContactPoint2D contact = collision.GetContact(i);
-                if(Vector3.Dot(contact.normal, Vector3.up) > 0.5)
-                {
-                    Debug.Log("Can Jump");
-                    canJump = true;
-                }
-            }
-        } else {
-            canJump = false;
-        }
+    private bool CanJump() {
+        return canJump;
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
         if(collision.contacts.Length > 0)
         {
             for (int i = 0; i < collision.contacts.Length; i++) {
