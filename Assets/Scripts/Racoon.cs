@@ -33,6 +33,12 @@ public class Racoon : MonoBehaviour
     {
         horizontal = moveAction.ReadValue<Vector2>().x;
         transform.position = new Vector2(transform.position.x + horizontal * 0.1f, transform.position.y);
+
+        if (horizontal > 0) {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        } else {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 
     // private void Move(InputAction.CallbackContext context) {
