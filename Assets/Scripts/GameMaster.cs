@@ -9,6 +9,7 @@ public class GameMaster : Singleton<GameMaster>
     public State GameState { get { return _gameState;} }
 
     #region UI
+    [SerializeField]
     private GameObject mainMenuPanel;
 
     private void HideMainMenu () {
@@ -28,7 +29,7 @@ public class GameMaster : Singleton<GameMaster>
 
     public void StartGame(int playerCount = 1) {
         Debug.Log("Start Game");
-        HideMainMenu();
+        //HideMainMenu();
         SpawnPlayers(playerCount);
     }
 
