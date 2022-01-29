@@ -37,7 +37,7 @@ public class CameraManager : Singleton<CameraManager>
             distance -= 20f;
             distance = Mathf.Max(distance, 0f); //Cannot be below 0
 
-            Debug.Log(distance);
+            //Debug.Log(distance);
             _camera.fieldOfView = Mathf.Clamp(baseFov + (distanceFovMod * distance), 125f, 160f);
     
         } else if (racoons.Count > 2) {
