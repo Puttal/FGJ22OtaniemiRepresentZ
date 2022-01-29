@@ -20,8 +20,8 @@ public class Racoon : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         colider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
 
         var gamepad = Gamepad.current;
         var keyboard = Keyboard.current;
