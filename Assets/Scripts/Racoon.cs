@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Racoon : MonoBehaviour
 {
+    private Animator animator;
     private Rigidbody2D rigid;
     private PlayerInput playerInput;
     private InputAction moveAction;
@@ -14,6 +15,7 @@ public class Racoon : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         var gamepad = Gamepad.current;
         var keyboard = Keyboard.current;
@@ -38,6 +40,12 @@ public class Racoon : MonoBehaviour
             transform.localScale = new Vector3(-1f, 1f, 1f);
         } else {
             transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        if (horizontal != 0) {
+            animator.SetBool("isMoving", true);
+        } else {
+            animator.SetBool("isMoving", false);
         }
     }
 
