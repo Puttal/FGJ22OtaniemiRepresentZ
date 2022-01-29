@@ -8,6 +8,7 @@ public class Racoon : MonoBehaviour
     private Rigidbody2D rigid;
     private PlayerInput playerInput;
     private InputAction moveAction;
+    private float horizontal;
     private InputAction jumpAction;
     // Start is called before the first frame update
     void Awake()
@@ -15,22 +16,28 @@ public class Racoon : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         var gamepad = Gamepad.current;
+        var keyboard = Keyboard.current;
+
         playerInput = GetComponent<PlayerInput>();
+        InputDevice device = playerInput.GetDevice<InputDevice>();
+        
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
 
+        //moveAction.performed += Move;
         jumpAction.performed += Jump;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector2 input = moveAction.ReadValue<Vector2>();
-        float horizontal = input.x;
-        //float vertical = input.y;
-
-        transform.position = new Vector2(transform.position.x + horizontal * 0.01f, transform.position.y);
+        horizontal = moveAction.ReadValue<Vector2>().x;
+        transform.position = new Vector2(transform.position.x + horizontal * 0.1f, transform.position.y);
     }
+
+    // private void Move(InputAction.CallbackContext context) {
+    //     horizontal = context.ReadValue<Vector2>().x;
+    // }
 
     private void Jump(InputAction.CallbackContext context) {
         //TODO: Detect a collision below me, to allow jumping
