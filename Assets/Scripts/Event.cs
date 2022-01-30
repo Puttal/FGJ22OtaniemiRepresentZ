@@ -23,6 +23,12 @@ public class Event : MonoBehaviour
     GameObject originalBG;
     GameObject currentBG;
 
+    [SerializeField]
+    AudioSource ambientAudio;
+
+    [SerializeField]
+    AudioSource effectAudio;
+
     private void Awake() {
         if (eventInfo.backgroundStart_day) {
             originalBG = Instantiate(eventInfo.backgroundStart_day, transform.position, Quaternion.identity, transform);
@@ -33,11 +39,17 @@ public class Event : MonoBehaviour
         if (GetComponent<SpriteRenderer>()) {
             GetComponent<SpriteRenderer>().enabled = false;
         }
-        
+
         eventState = EventConsequence.NoneYet;
 
         racoonChoices = new Dictionary<Racoon, EventOption>();
         racoonConfirmed = new Dictionary<Racoon, bool>();
+
+
+        if (eventInfo.ambient_Start) {
+            ambientAudio.clip = eventInfo.ambient_Start;
+            ambientAudio.Play();
+        }
     }
 
     private void FixedUpdate() {
@@ -147,6 +159,20 @@ public class Event : MonoBehaviour
                 
                 currentBG = Instantiate(prefab, transform.position, Quaternion.identity, transform);
             }
+
+            //Trigger Sounds
+            if (eventState == EventConsequence.AA) {
+                effectAudio.clip = eventInfo.sound_effect_AA;
+                ambientAudio.clip = eventInfo.ambient_AA_day;
+            } else if (eventState == EventConsequence.BB) {
+                effectAudio.clip = eventInfo.sound_effect_BB;
+                ambientAudio.clip = eventInfo.ambient_BB_day;
+            } else if (eventState == EventConsequence.AB) {
+                effectAudio.clip = eventInfo.sound_effect_AB;
+                ambientAudio.clip = eventInfo.ambient_AB_day;
+            }
+            effectAudio.Play();
+            ambientAudio.Play();
         }
     }
 
@@ -170,6 +196,16 @@ public class Event : MonoBehaviour
 
                 currentBG = Instantiate(prefab, transform.position, Quaternion.identity, transform);
             }
+
+            //Trigger Sounds
+            if (eventState == EventConsequence.AA) {
+                ambientAudio.clip = eventInfo.ambient_AA_night;
+            } else if (eventState == EventConsequence.BB) {
+                ambientAudio.clip = eventInfo.ambient_BB_night;
+            } else if (eventState == EventConsequence.AB) {
+                ambientAudio.clip = eventInfo.ambient_AB_night;
+            }
+            ambientAudio.Play();
         }
     }
 }

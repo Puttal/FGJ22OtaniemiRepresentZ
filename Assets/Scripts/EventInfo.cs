@@ -32,6 +32,7 @@ public class EventInfo : ScriptableObject
     public AudioClip ambient_AB_night;
 
     //Option pressed / activated
-    public AudioClip sound_option1;
-    public AudioClip sound_option2;
+    public AudioClip sound_effect_AA;
+    public AudioClip sound_effect_BB;
+    public AudioClip sound_effect_AB;
 }
