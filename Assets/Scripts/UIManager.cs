@@ -25,4 +25,8 @@ public class UIManager : Singleton<UIManager>
         option1_text.text = option1;
         option2_text.text = option2;
     }
+
+    public void CloseEventPopup()  {
+        popupPanel.SetActive(false);
+    }
 }

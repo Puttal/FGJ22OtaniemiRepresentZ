@@ -173,6 +173,8 @@ public class Event : MonoBehaviour
             }
             effectAudio.Play();
             ambientAudio.Play();
+
+            UIManager.Instance.CloseEventPopup();
         }
     }
 
