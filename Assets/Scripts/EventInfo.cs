@@ -7,15 +7,15 @@ public class EventInfo : ScriptableObject
     public string eventKey;
 
     //Visuals (prefab GameObjects instead? as allows animation more easily)
-    public Sprite backgroundStart_day;
+    public GameObject backgroundStart_day;
     
-    public Sprite backgroundAA_day; //One player / both players option A
-    public Sprite backgroundBB_day; //One player / both players option B
-    public Sprite backgroundAB_day; //Mixed
+    public GameObject backgroundAA_day; //One player / both players option A
+    public GameObject backgroundBB_day; //One player / both players option B
+    public GameObject backgroundAB_day; //Mixed
 
-    public Sprite backgroundAA_night; //One player / both players option A
-    public Sprite backgroundBB_night; //One player / both players option B
-    public Sprite backgroundAB_night; //Mixed
+    public GameObject backgroundAA_night; //One player / both players option A
+    public GameObject backgroundBB_night; //One player / both players option B
+    public GameObject backgroundAB_night; //Mixed
 
 
     //Option texts
@@ -23,14 +23,15 @@ public class EventInfo : ScriptableObject
     public string option2;
 
     //Sounds
-    //Ambient_Start
-    //Ambient_AA_day
-    //Ambient_BB_day
-    //Ambient_AB_day
-    //Ambient_AA_night
-    //Ambient_BB_night
-    //Ambient_AB_night
+    public AudioClip ambient_Start;
+    public AudioClip ambient_AA_day;
+    public AudioClip ambient_BB_day;
+    public AudioClip ambient_AB_day;
+    public AudioClip ambient_AA_night;
+    public AudioClip ambient_BB_night;
+    public AudioClip ambient_AB_night;
 
-    //SoundOption1
-    //SoundOption2
+    //Option pressed / activated
+    public AudioClip sound_option1;
+    public AudioClip sound_option2;
 }

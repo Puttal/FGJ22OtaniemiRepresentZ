@@ -12,6 +12,8 @@ public class Racoon : MonoBehaviour
     private float horizontal;
     private InputAction jumpAction;
     private InputAction interAction;
+    private InputAction chooseA;
+    private InputAction chooseB;
     
 
     private bool canJump = false;
@@ -31,11 +33,16 @@ public class Racoon : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         interAction = playerInput.actions["Interact"];
 
+        chooseA = playerInput.actions["ChooseA"];
+        chooseB = playerInput.actions["ChooseB"];
+
         //moveAction.performed += Move;
         jumpAction.performed += Jump;
         interAction.performed += Interact;
+        chooseA.performed += ChooseA;
+        chooseB.performed += ChooseB;
 
-        CameraManager.Instance.AddRacoon(this);
+        GameMaster.Instance.AddRacoon(this);
     }
 
     // Update is called once per frame
@@ -63,9 +70,18 @@ public class Racoon : MonoBehaviour
         //TODO
     }
 
+    private void ChooseA(InputAction.CallbackContext context) {
+        GameMaster.Instance.GetCurrentEvent().RacoonChoose(this, Event.EventOption.A);
+    }
+    
+    private void ChooseB(InputAction.CallbackContext context) {
+        GameMaster.Instance.GetCurrentEvent().RacoonChoose(this, Event.EventOption.B);
+    }
+
     private bool CanJump() {
         return canJump;
     }
+    
 
     void OnCollisionEnter2D(Collision2D collision)
     {
