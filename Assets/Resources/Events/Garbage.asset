@@ -13,9 +13,21 @@ MonoBehaviour:
   m_Name: Garbage
   m_EditorClassIdentifier: 
   eventKey: garbage
-  backgroundStart: {fileID: 0}
-  backgroundAA: {fileID: 0}
-  backgroundBB: {fileID: 0}
-  backgroundAB: {fileID: 0}
+  backgroundStart_day: {fileID: 3685799326441842810, guid: 0288be55d16286b4a9de385c8126b2a5, type: 3}
+  backgroundAA_day: {fileID: 0}
+  backgroundBB_day: {fileID: 0}
+  backgroundAB_day: {fileID: 0}
+  backgroundAA_night: {fileID: 0}
+  backgroundBB_night: {fileID: 0}
+  backgroundAB_night: {fileID: 0}
   option1: Do something
   option2: Do the other thing
+  ambient_Start: {fileID: 0}
+  ambient_AA_day: {fileID: 0}
+  ambient_BB_day: {fileID: 0}
+  ambient_AB_day: {fileID: 0}
+  ambient_AA_night: {fileID: 0}
+  ambient_BB_night: {fileID: 0}
+  ambient_AB_night: {fileID: 0}
+  sound_option1: {fileID: 0}
+  sound_option2: {fileID: 0}

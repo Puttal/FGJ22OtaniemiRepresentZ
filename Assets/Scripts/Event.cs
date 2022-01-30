@@ -28,6 +28,12 @@ public class Event : MonoBehaviour
             originalBG = Instantiate(eventInfo.backgroundStart_day, transform.position, Quaternion.identity, transform);
             currentBG = originalBG;
         }
+
+        //Remove placeholder
+        if (GetComponent<SpriteRenderer>()) {
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
+        
         eventState = EventConsequence.NoneYet;
 
         racoonChoices = new Dictionary<Racoon, EventOption>();
