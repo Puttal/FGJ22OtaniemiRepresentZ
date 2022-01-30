@@ -80,6 +80,9 @@ public class Event : MonoBehaviour
             else {
                 racoonChoices.Add(racoon, choice);
             }
+
+            int racNumber = GameMaster.Instance.Racoons().IndexOf(racoon);
+            UIManager.Instance.VisualizeVote(racNumber, choice);
         }
     }
 
