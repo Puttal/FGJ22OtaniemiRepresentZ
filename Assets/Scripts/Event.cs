@@ -11,12 +11,14 @@ public class Event : MonoBehaviour
     float triggerDistance = 1f;
 
     private bool isTriggered = false;
+    private bool isChoiceMade = false;
     private bool isConsequenced = false;
 
     public enum EventOption { A, B };
     public enum EventConsequence { AA, BB, AB, NoneYet };
     private EventConsequence eventState;
     Dictionary <Racoon, EventOption> racoonChoices;
+    Dictionary <Racoon, bool> racoonConfirmed;
 
     GameObject originalBG;
     GameObject currentBG;
@@ -29,6 +31,7 @@ public class Event : MonoBehaviour
         eventState = EventConsequence.NoneYet;
 
         racoonChoices = new Dictionary<Racoon, EventOption>();
+        racoonConfirmed = new Dictionary<Racoon, bool>();
     }
 
     private void FixedUpdate() {
@@ -49,14 +52,63 @@ public class Event : MonoBehaviour
     }
 
     public void RacoonChoose(Racoon racoon, EventOption choice) {
-        //If already in Dictionary, change value
-        if (racoonChoices.ContainsKey(racoon)) {
-            racoonChoices[racoon] = choice;
-        } 
-        //If not yet in Dictionary, add value
-        else {
-            racoonChoices.Add(racoon, choice);
+        if (!racoonConfirmed.ContainsKey(racoon)) {
+            //If already in Dictionary, change value
+            if (racoonChoices.ContainsKey(racoon)) {
+                racoonChoices[racoon] = choice;
+            } 
+            //If not yet in Dictionary, add value
+            else {
+                racoonChoices.Add(racoon, choice);
+            }
         }
+    }
+
+    public void RacoonConfirm(Racoon racoon) {
+        //Set confirmed to true.
+        if (!racoonConfirmed.ContainsKey(racoon)) {
+            racoonConfirmed.Add(racoon, true);
+        } 
+
+        if (EventReady()) {
+            int A_votes = 0;
+            int B_votes = 0;
+
+            foreach (EventOption choice in racoonChoices.Values) {
+                if (choice == EventOption.A) {
+                    A_votes++;
+                } else if (choice == EventOption.B) {
+                    B_votes++;
+                }
+            }
+
+            //2 players
+            if (A_votes == 1 && B_votes == 1) {
+                eventState = EventConsequence.AB;
+            } else if (A_votes == 2) {
+                eventState = EventConsequence.AA;
+            } else if (B_votes == 2) {
+                eventState = EventConsequence.BB;
+            } 
+            // 1 player
+            else if (A_votes == 1) {
+                eventState = EventConsequence.AA;
+            } else if (B_votes == 1) {
+                eventState = EventConsequence.BB;
+            }
+
+            ShowImmediateEffect();
+        }
+    }
+
+    public bool EventReady() {
+        int racoonCount = GameMaster.Instance.Racoons().Count;
+        int voteCount = racoonConfirmed.Count;
+
+        if (voteCount >= racoonCount) {
+            return true;
+        }
+        return false;
     }
 
     private void TriggerEvent() {
@@ -67,21 +119,49 @@ public class Event : MonoBehaviour
         GameMaster.Instance.SetCurrentEvent(this);
     }
 
-    public void ShowConsequences() {
-        isConsequenced = true;
+    private void ShowImmediateEffect() {
+        if (!isChoiceMade) {
+            isChoiceMade = true;
 
-        GameObject prefab = null;
-        if (eventState == EventConsequence.AA) {
-            prefab = eventInfo.backgroundAA_night;
-        } else if (eventState == EventConsequence.BB) {
-            prefab = eventInfo.backgroundBB_night;
-        } else if (eventState == EventConsequence.AB) {
-            prefab = eventInfo.backgroundAB_night;
+            GameObject prefab = null;
+            if (eventState == EventConsequence.AA) {
+                prefab = eventInfo.backgroundAA_day;
+            } else if (eventState == EventConsequence.BB) {
+                prefab = eventInfo.backgroundBB_day;
+            } else if (eventState == EventConsequence.AB) {
+                prefab = eventInfo.backgroundAB_day;
+            }
+
+            if (prefab) {
+                if (originalBG.activeSelf) {
+                    originalBG.SetActive(false);
+                }
+                
+                currentBG = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            }
         }
+    }
 
-        if (prefab) {
-            originalBG.SetActive(false);
-            currentBG = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+    public void ShowConsequences() {
+        if (!isConsequenced){
+            isConsequenced = true;
+
+            GameObject prefab = null;
+            if (eventState == EventConsequence.AA) {
+                prefab = eventInfo.backgroundAA_night;
+            } else if (eventState == EventConsequence.BB) {
+                prefab = eventInfo.backgroundBB_night;
+            } else if (eventState == EventConsequence.AB) {
+                prefab = eventInfo.backgroundAB_night;
+            }
+
+            if (prefab) {
+                if (originalBG.activeSelf) {
+                    originalBG.SetActive(false);
+                }
+
+                currentBG = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+            }
         }
     }
 }
