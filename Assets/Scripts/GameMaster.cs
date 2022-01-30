@@ -13,6 +13,11 @@ public class GameMaster : Singleton<GameMaster>
 
     private List<Racoon> racoons;
 
+    [SerializeField]
+    private GameObject environmentDay;
+    [SerializeField]
+    private GameObject environmentNight;
+
     #region UI
     [SerializeField]
     private GameObject mainMenuPanel;
@@ -27,6 +32,8 @@ public class GameMaster : Singleton<GameMaster>
     private void Awake() {
         _gameState = State.Menus;
         racoons = new List<Racoon>();
+
+        environmentNight.SetActive(false);
     }
 
     public void AddRacoon(Racoon racoon) {
@@ -51,6 +58,9 @@ public class GameMaster : Singleton<GameMaster>
     }
 
     public void SwitchDayNight() {
+        environmentNight.SetActive(true);
+        environmentDay.SetActive(false);
+
         foreach (Event ev in GameObject.FindObjectsOfType<Event>()) {
             ev.ShowConsequences();
         }
