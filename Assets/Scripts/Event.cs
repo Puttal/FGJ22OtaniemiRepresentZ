@@ -52,6 +52,7 @@ public class Event : MonoBehaviour
     }
 
     public void RacoonChoose(Racoon racoon, EventOption choice) {
+        Debug.Log(choice);
         if (!racoonConfirmed.ContainsKey(racoon)) {
             //If already in Dictionary, change value
             if (racoonChoices.ContainsKey(racoon)) {
@@ -120,6 +121,7 @@ public class Event : MonoBehaviour
     }
 
     private void ShowImmediateEffect() {
+        Debug.Log("ShowImmediateEffect");
         if (!isChoiceMade) {
             isChoiceMade = true;
 

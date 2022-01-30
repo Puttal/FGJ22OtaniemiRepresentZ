@@ -75,7 +75,7 @@ public class Racoon : MonoBehaviour
     }
 
     private void Interact(InputAction.CallbackContext context) {
-        //TODO
+        GameMaster.Instance.GetCurrentEvent().RacoonConfirm(this);
     }
 
     private void ChooseA(InputAction.CallbackContext context) {

@@ -50,6 +50,12 @@ public class GameMaster : Singleton<GameMaster>
         return currentEvent;
     }
 
+    public void SwitchDayNight() {
+        foreach (Event ev in GameObject.FindObjectsOfType<Event>()) {
+            ev.ShowConsequences();
+        }
+    }
+
     public void Quit() {
         // save any game data here
         #if UNITY_EDITOR
