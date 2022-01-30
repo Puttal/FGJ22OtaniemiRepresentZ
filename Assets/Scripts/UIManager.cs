@@ -48,11 +48,6 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void VisualizeVote(int racoonNumber, Event.EventOption option) {
-        vote_A_1.SetActive(false);
-        vote_A_2.SetActive(false);
-        vote_B_1.SetActive(false);
-        vote_B_2.SetActive(false);
-
         if (racoonNumber == 0) {
             vote_A_1.SetActive(false);
             vote_B_1.SetActive(false);
