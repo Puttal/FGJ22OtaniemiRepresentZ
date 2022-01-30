@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
+  environmentDay: {fileID: 0}
+  environmentNight: {fileID: 0}
+  mainMenuPanel: {fileID: 0}
   racoonPrefab: {fileID: 3953150397393445190, guid: 5f2b061f6b457a84fbf0815f6ba5e17a, type: 3}
