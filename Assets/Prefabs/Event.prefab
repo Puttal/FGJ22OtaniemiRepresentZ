@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventInfo: {fileID: 11400000, guid: d56e0ef0851e1034da44bddc5c975a1c, type: 2}
-  triggerDistance: 2
+  triggerDistance: 5
   ambientAudio: {fileID: 2447100085792213652}
   effectAudio: {fileID: 7814742559414594039}
 --- !u!212 &7746357829207598062

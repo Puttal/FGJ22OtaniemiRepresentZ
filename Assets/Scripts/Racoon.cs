@@ -54,9 +54,9 @@ public class Racoon : MonoBehaviour
         transform.position = new Vector2(transform.position.x + horizontal * 0.1f, transform.position.y);
 
         if (horizontal > 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-.5f, .5f, 1f);
         } else if (horizontal < 0) {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(.5f, .5f, 1f);
         }
 
         if (horizontal != 0) {
