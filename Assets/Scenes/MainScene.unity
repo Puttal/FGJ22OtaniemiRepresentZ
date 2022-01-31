@@ -157,6 +157,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &121689841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 319683192314734433, guid: 44acc6c2c8b1d1341bcda556582e2382, type: 3}
+  m_PrefabInstance: {fileID: 1949335582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &783139910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6022249352340629105, guid: e21007e10638b2547a475743ac43aeeb, type: 3}
@@ -190,6 +195,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Event_3
       objectReference: {fileID: 0}
+    - target: {fileID: 7746357829207598060, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
+      propertyPath: eventInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 349df00da369457459449780ac7beb97, type: 2}
+    - target: {fileID: 7746357829207598062, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -391925534044687745, guid: 5f76d8548ceea0e418b02e4ce02a7bda, type: 3}
     - target: {fileID: 7746357829207598063, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -252,6 +265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Event_4
       objectReference: {fileID: 0}
+    - target: {fileID: 7746357829207598060, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
+      propertyPath: eventInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: a4ba4c6e2b1fba343a06acb7bf85079d, type: 2}
     - target: {fileID: 7746357829207598063, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -415,6 +432,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Event_2
       objectReference: {fileID: 0}
+    - target: {fileID: 7746357829207598060, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
+      propertyPath: eventInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: b57d16822a88da542b8dae4ece3602db, type: 2}
+    - target: {fileID: 7746357829207598062, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4763108479221869609, guid: 0c2313cdff8826548ac0db848756b9f2, type: 3}
     - target: {fileID: 7746357829207598063, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -461,6 +486,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93c2913a8bb20c2458ddfe011ff7d437, type: 3}
+--- !u!1 &1640385796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 319683192314734433, guid: 44acc6c2c8b1d1341bcda556582e2382, type: 3}
+  m_PrefabInstance: {fileID: 319683192099391079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1644913348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4177887707588121663, guid: 274a9b5defb11674b89551da81e15764, type: 3}
@@ -1056,6 +1086,14 @@ PrefabInstance:
       propertyPath: mainMenuPanel
       value: 
       objectReference: {fileID: 1644913348}
+    - target: {fileID: 7948645338264509613, guid: 66b18b52e3ea7904d9741c252980a86d, type: 3}
+      propertyPath: environmentDay
+      value: 
+      objectReference: {fileID: 121689841}
+    - target: {fileID: 7948645338264509613, guid: 66b18b52e3ea7904d9741c252980a86d, type: 3}
+      propertyPath: environmentNight
+      value: 
+      objectReference: {fileID: 1640385796}
     - target: {fileID: 7948645338264509619, guid: 66b18b52e3ea7904d9741c252980a86d, type: 3}
       propertyPath: m_Name
       value: GameMaster

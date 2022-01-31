@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24deb2f63211c1243963eeaa1702287e, type: 3}
-  m_Name: Garbage
+  m_Name: Event_Bedroom
   m_EditorClassIdentifier: 
-  eventKey: garbage
-  backgroundStart_day: {fileID: 3685799326441842810, guid: 0288be55d16286b4a9de385c8126b2a5, type: 3}
+  eventKey: 
+  backgroundStart_day: {fileID: 0}
   backgroundAA_day: {fileID: 0}
   backgroundBB_day: {fileID: 0}
   backgroundAB_day: {fileID: 0}
   backgroundAA_night: {fileID: 0}
   backgroundBB_night: {fileID: 0}
   backgroundAB_night: {fileID: 0}
-  option1: Do something
-  option2: Do the other thing
-  ambient_Start: {fileID: 0}
+  option1: 
+  option2: 
+  ambient_Start: {fileID: 8300000, guid: ab234187e6d256b4e8824072a2ec2f84, type: 3}
   ambient_AA_day: {fileID: 0}
   ambient_BB_day: {fileID: 0}
   ambient_AB_day: {fileID: 0}
   ambient_AA_night: {fileID: 0}
   ambient_BB_night: {fileID: 0}
   ambient_AB_night: {fileID: 0}
-  sound_option1: {fileID: 0}
-  sound_option2: {fileID: 0}
+  sound_effect_AA: {fileID: 0}
+  sound_effect_BB: {fileID: 0}
+  sound_effect_AB: {fileID: 0}
